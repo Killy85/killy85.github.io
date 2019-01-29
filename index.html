@@ -28,23 +28,13 @@
                 }
             }
         });
-
-        function refrespage() {
-            location.reload();
-        }
-
-        function playvid() {
-            vid.play();
-        }
     </script>
-    <!-- IF YOU WANT TO PLAY ALPHA VIDEO THEN IT SHOULD BE IN WEBM FORMAT ........ 
-    FOR NORMAL VIDEO - MP4 or OGG -->
 </head>
 
 <body style="margin : 0px; overflow: hidden;">
     <a-scene embedded artoolkit='sourceType: webcam; detectionMode: mono; maxDetectionRate: 60; canvasWidth: 200; canvasHeight: 200'>
         <a-assets>
-            <video preload="auto" id="vid" poster="ANY IMAGE PATH (THUMBNAIL)" response-type="arraybuffer" loop="false" crossorigin webkit-playsinline playsinline controls>
+            <video preload="auto" id="vid"  response-type="arraybuffer" loop="false" crossorigin webkit-playsinline playsinline controls>
                 <source  src="video/csgo.mp4">
             </video>
         </a-assets>
@@ -53,20 +43,6 @@
         </a-marker>
         <a-entity camera></a-entity>
     </a-scene>
-    <div class="footer">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-left">
-                <div class="onebleft">
-                    <button onclick="vid.playvid()" class="btn btnskips">Play (CHROME)</button>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pull-right">
-                <div class="onebright">
-                    <button onclick="refrespage()" class="btn btnskips">Refresh</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 </body>
 
