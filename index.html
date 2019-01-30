@@ -11,7 +11,9 @@
 	<script src="threex/threex-artoolkitsource.js"></script>
 	<script src="threex/threex-artoolkitcontext.js"></script>
 	<script src="threex/threex-arbasecontrols.js"></script>
-	<script src="threex/threex-armarkercontrols.js"></script>
+    <script src="threex/threex-armarkercontrols.js"></script>
+	<script src="js/OBJLoader.js"></script>
+	<script src="js/MTLLoader.js"></script>
 </head>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
@@ -111,8 +113,31 @@ function initialize()
 	let markerControls1 = new THREEx.ArMarkerControls(arToolkitContext, markerRoot1, {
 		type: 'pattern', patternUrl: "data/blast.patt",
 	})
+    var loader = new THREE.OBJLoader();
+        // load a resource
+        loader.load(
+            // resource URL
+            'data/Male.OBJ',
+            // called when resource is loaded
+            function ( object ) {
 
-	let geometry1	= new THREE.CubeGeometry(1,1,1);
+                markerRoot1.add(object);
+
+            },
+            // called when loading is in progresses
+            function ( xhr ) {
+
+                console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+            },
+            // called when loading has errors
+            function ( error ) {
+
+                console.log( 'An error happened' );
+
+            }
+        );
+	/*let geometry1	= new THREE.CubeGeometry(1,1,1);
 	let material1	= new THREE.MeshNormalMaterial({
 		transparent: true,
 		opacity: 0.5,
@@ -120,9 +145,9 @@ function initialize()
 	}); 
 	
 	mesh1 = new THREE.Mesh( geometry1, material1 );
-	mesh1.position.y = 0.5;
+	mesh1.position.y = 0.5;*/
 	
-	markerRoot1.add( mesh1 );
+	//markerRoot1.add( mesh1 );
 }
 
 
